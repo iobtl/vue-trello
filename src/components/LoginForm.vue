@@ -94,14 +94,14 @@
         </div>
         <div class="flex item-center justify-between">
           <button
-            class="bg-vue bg-opacity-85 hover:bg-green-700 text-white font-bold rounded px-4 py-2 mb-4"
+            class="bg-vue bg-opacity-85 hover:bg-green-700 text-white font-bold rounded px-4 py-2"
             type="submit"
             @click="$emit('set-message')"
           >
             Register
           </button>
           <button
-            class="bg-gray-600 bg-opacity-85 hover:bg-gray-700 text-white font-bold rounded px-4 py-2 mb-4"
+            class="bg-gray-600 bg-opacity-85 hover:bg-gray-700 text-white font-bold rounded px-4 py-2"
             @click="switchRegister"
           >
             Back
@@ -114,21 +114,21 @@
 
 <script>
 export default {
-  name: "login-form",
+  name: 'login-form',
   data() {
     return {
-      username: "",
-      password: "",
-      email: "",
+      username: '',
+      password: '',
+      email: '',
       users: [],
       registered: true,
-      message: null
+      message: null,
     };
   },
   methods: {
     loginUser() {
-      this.username = "";
-      this.password = "";
+      this.username = '';
+      this.password = '';
     },
     switchRegister() {
       this.registered = !this.registered;
@@ -137,13 +137,13 @@ export default {
       const newUser = {
         email: this.email,
         username: this.username,
-        password: this.password
+        password: this.password,
       };
       this.users = this.users.concat(newUser);
-      this.username = "";
-      this.password = "";
-    }
-  }
+      this.username = '';
+      this.password = '';
+    },
+  },
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-vue">
     <h1 class="text-5xl font-bold font-sans text-white ">
       Vue Trello
     </h1>
@@ -8,10 +8,13 @@
 </template>
 
 <script>
-import LoginForm from "./LoginForm.vue";
+import LoginForm from './LoginForm.vue';
 
 export default {
-  name: "Home",
-  components: { LoginForm }
+  name: 'Home',
+  components: { LoginForm },
+  beforeCreate() {
+    document.body.className = 'bg-vue';
+  },
 };
 </script>
