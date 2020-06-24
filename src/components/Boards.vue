@@ -27,7 +27,9 @@
         />
         <button
           class="bg-gray-600 bg-opacity-50 align-left w-1/8 mt-4 bg-opacity-85 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
+          :class="{ disabled: isDisabled }"
           type="submit"
+          :disabled="isDisabled"
         >Create</button>
         <button
           class="bg-gray-600 bg-opacity-50 align-left w-1/8 mt-4 ml-2 bg-opacity-85 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
@@ -51,12 +53,24 @@ export default {
   methods: {
     triggerCreation() {
       this.creation = !this.creation;
+      this.boardName = "";
     },
     createNewBoard() {
       this.boards.push(this.boardName);
       this.boardName = "";
       this.creation = false;
     }
+  },
+  computed: {
+    isDisabled() {
+      return this.boardName.length === 0;
+    }
   }
 };
 </script>
+
+<style scoped>
+.disabled {
+  color: lightgray;
+}
+</style>
