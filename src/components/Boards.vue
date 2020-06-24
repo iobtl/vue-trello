@@ -1,24 +1,26 @@
 <template>
-  <div class="container w-full max-w-sm">
+  <div class="container w-full max-w-m">
     <div class="flex ml-2">
       <span>
         <img src="https://img.icons8.com/pastel-glyph/2x/person-male.png" width="32" />
       </span>
       <h2 class="text-left text-white font-sans font-bold text-xl ml-2">Personal Boards</h2>
     </div>
-    <div
-      v-for="(board, index) in boards"
-      :key="index"
-      class="container max-w-xs w-1/2 bg-gray-600 hover:bg-gray-700 bg-opacity-50 mt-4 ml-4 text-white font-sans"
-    >{{ board }}</div>
+    <div class="grid grid-flow-row grid-cols-4 row-span-4">
+      <div
+        v-for="(board, index) in boards"
+        :key="index"
+        class="container rounded flex-none w-auto max-w-xs bg-gray-600 hover:bg-gray-700 bg-opacity-50 mt-4 ml-4 text-white font-sans"
+      >{{ board }}</div>
+    </div>
     <div v-if="!creation" class="flex">
       <button
-        class="bg-gray-600 bg-opacity-50 w-1/8 mt-4 ml-4 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
+        class="bg-gray-600 bg-opacity-50 min-w-1/8 w-1/8 mt-4 ml-4 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
         @click="triggerCreation"
       >Create new board</button>
     </div>
     <div v-else>
-      <form class="flex-wrap justify-start w-1/2 mt-4 ml-4" @submit.prevent="createNewBoard">
+      <form class="flex-wrap justify-start w-48 mt-4 ml-4" @submit.prevent="createNewBoard">
         <input
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           v-model="boardName"
