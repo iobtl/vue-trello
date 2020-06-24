@@ -1,27 +1,62 @@
 <template>
-  <div class="flex-wrap">
+  <div class="container w-full max-w-sm">
     <div class="flex ml-2">
       <span>
-        <img
-          src="https://img.icons8.com/pastel-glyph/2x/person-male.png"
-          width="32"
-        />
+        <img src="https://img.icons8.com/pastel-glyph/2x/person-male.png" width="32" />
       </span>
-      <h2 class="text-left text-vue font-sans font-bold text-xl ml-2">
-        Personal Boards
-      </h2>
+      <h2 class="text-left text-white font-sans font-bold text-xl ml-2">Personal Boards</h2>
     </div>
-    <div>
-      <button>Create new board</button>
+    <div
+      v-for="(board, index) in boards"
+      :key="index"
+      class="container max-w-xs w-1/2 bg-gray-600 hover:bg-gray-700 bg-opacity-50 mt-4 ml-4 text-white font-sans"
+    >{{ board }}</div>
+    <div v-if="!creation" class="flex">
+      <button
+        class="bg-gray-600 bg-opacity-50 w-1/8 mt-4 ml-4 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
+        @click="triggerCreation"
+      >Create new board</button>
+    </div>
+    <div v-else>
+      <form class="flex-wrap justify-start w-1/2 mt-4 ml-4" @submit.prevent="createNewBoard">
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          v-model="boardName"
+          type="text"
+          placeholder="Board name"
+        />
+        <button
+          class="bg-gray-600 bg-opacity-50 align-left w-1/8 mt-4 bg-opacity-85 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
+          type="submit"
+        >Create</button>
+        <button
+          class="bg-gray-600 bg-opacity-50 align-left w-1/8 mt-4 ml-2 bg-opacity-85 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
+          @click="triggerCreation"
+        >Cancel</button>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'boards-page',
+  name: "boards-page",
   data() {
-    boards: [];
+    return {
+      boards: [],
+      creation: false,
+      boardName: ""
+    };
   },
+  methods: {
+    triggerCreation() {
+      this.creation = !this.creation;
+    },
+    createNewBoard() {
+      this.boards.push(this.boardName);
+      this.boardName = "";
+      this.creation = false;
+    }
+  }
 };
 </script>
