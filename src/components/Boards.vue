@@ -10,7 +10,7 @@
       <div
         v-for="(board, index) in boards"
         :key="index"
-        class="container rounded flex-none w-auto max-w-xs bg-gray-600 hover:bg-gray-700 bg-opacity-50 mt-4 ml-4 text-white font-sans"
+        class="container rounded flex-none w-auto h-32 max-w-xs bg-gray-600 hover:bg-gray-700 bg-opacity-50 mt-4 ml-4 text-white font-sans font-bold py-2"
       >{{ board }}</div>
     </div>
     <div v-if="!creation" class="flex">
