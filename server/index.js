@@ -1,10 +1,14 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv').config();
 const app = express();
+const usersRouter = require('./controllers/users');
 
 const PORT = process.env.PORT;
 const MONGODB_URI = process.env.MONGODB_URI;
+
+app.use(express.json());
+app.use('/users', usersRouter);
 
 mongoose
   .connect(
@@ -16,10 +20,6 @@ mongoose
   )
   .then(() => console.log('Connected to MongoDB'))
   .catch(() => console.log('Error connecting to MongoDB'));
-
-app.get('/', (request, response) => {
-  response.json({ message: 'hello' });
-});
 
 app.listen(PORT, () => {
   `Server running on ${PORT}`;

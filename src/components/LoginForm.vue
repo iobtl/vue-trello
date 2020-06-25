@@ -137,7 +137,6 @@ export default {
       const newUser = {
         email: this.email,
         username: this.username,
-        password: this.password,
       };
       this.users = this.users.concat(newUser);
       this.username = '';
