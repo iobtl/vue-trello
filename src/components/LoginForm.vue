@@ -81,8 +81,7 @@
         </div>
         <div class="mb-6">
           <label
-            class="block text-gray-700 text-sm font-bold mb-2 text-left
-        text-lg"
+            class="block text-gray-700 text-sm font-bold mb-2 text-left text-lg"
             for="email"
             >Email</label
           >
@@ -113,6 +112,8 @@
 </template>
 
 <script>
+import userService from '../services/user';
+
 export default {
   name: 'login-form',
   data() {
@@ -127,6 +128,9 @@ export default {
   },
   methods: {
     loginUser() {
+      const user = { username: this.username, password: this.password };
+      userService.login(user);
+
       this.username = '';
       this.password = '';
     },
