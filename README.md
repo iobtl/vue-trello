@@ -9,7 +9,7 @@ npm run serve
 ```
 
 ## Main technologies:
-CSS: Tailwind CSS 
-JS: Vue.js + Vue Router
-Server: Node.js (Express)
-Database: MongoDB (mongoose)
+* CSS: Tailwind CSS 
+* JS: Vue.js + Vue Router
+* Server: Node.js (Express)
+* Database: MongoDB (mongoose)
