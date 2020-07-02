@@ -115,7 +115,7 @@ export default {
     async loginUser() {
       const user = { username: this.username, password: this.password };
       const returnedUser = await userService.login(user);
-      window.localStorage.setItem("userToken", returnedUser.token);
+      window.localStorage.setItem("loggedInUser", JSON.stringify(returnedUser));
 
       this.username = "";
       this.password = "";

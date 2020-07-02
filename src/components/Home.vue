@@ -10,6 +10,13 @@ import LoginForm from "./LoginForm.vue";
 
 export default {
   name: "Home",
-  components: { LoginForm }
+  components: { LoginForm },
+  beforeCreate() {
+    const user = window.localStorage.getItem("loggedInUser");
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      this.$router.push(`${parsedUser.username}/boards`);
+    }
+  }
 };
 </script>
