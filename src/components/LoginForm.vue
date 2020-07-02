@@ -119,6 +119,7 @@ export default {
 
       this.username = "";
       this.password = "";
+      this.$router.push(`${returnedUser.username}/boards`);
     },
     switchRegister() {
       this.registered = !this.registered;
@@ -132,6 +133,7 @@ export default {
       userService.register(newUser);
       this.username = "";
       this.password = "";
+      this.email = "";
     }
   }
 };

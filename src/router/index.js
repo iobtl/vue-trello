@@ -9,6 +9,6 @@ Vue.use(VueRouter);
 export default new VueRouter({
   routes: [
     { path: '/', component: Home },
-    { path: '/boards', component: Boards },
+    { path: '/:user/boards', component: Boards },
   ],
 });
