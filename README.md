@@ -1,24 +1,15 @@
-# vue-blog
+# Vue Trello
 
-## Project setup
+## Run on a local machine
 ```
+git clone https://github.com/iobtl/vue-trello.git
+cd vue-trello
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Main technologies:
+CSS: Tailwind CSS 
+JS: Vue.js + Vue Router
+Server: Node.js (Express)
+Database: MongoDB (mongoose)
