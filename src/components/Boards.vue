@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import boardService from "../services/board";
+
 export default {
   name: "boards-page",
   data() {
@@ -58,7 +60,7 @@ export default {
       this.boardName = "";
     },
     createNewBoard() {
-      this.boards.push(this.boardName);
+      boardService.create(this.boardName);
       this.boardName = "";
       this.creation = false;
     }
@@ -67,6 +69,9 @@ export default {
     isDisabled() {
       return this.boardName.length === 0;
     }
+  },
+  created() {
+    this.boards = boardService.getAll();
   }
 };
 </script>
