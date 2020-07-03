@@ -74,6 +74,11 @@ export default {
     boardService.getAll().then(returnedBoards => {
       this.boards = returnedBoards.map(board => board.title);
     });
+  },
+  beforeUpdate() {
+    boardService.getAll().then(returnedBoards => {
+      this.boards = returnedBoards.map(board => board.title);
+    });
   }
 };
 </script>
