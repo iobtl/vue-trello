@@ -12,4 +12,4 @@ npm run serve
 * CSS: Tailwind CSS 
 * JS: Vue.js + Vue Router
 * Server: Node.js (Express)
-* Database: MongoDB (mongoose)
+* Database: MongoDB (Mongoose)
