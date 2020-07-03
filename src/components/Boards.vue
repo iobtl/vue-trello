@@ -71,7 +71,9 @@ export default {
     }
   },
   created() {
-    this.boards = boardService.getAll();
+    boardService.getAll().then(returnedBoards => {
+      this.boards = returnedBoards.map(board => board.title);
+    });
   }
 };
 </script>

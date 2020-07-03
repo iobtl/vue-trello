@@ -9,7 +9,6 @@ boardsRouter.get('/', async (request, response) => {
 
 boardsRouter.post('/', async (request, response) => {
   const body = request.body;
-  console.log(body);
 
   const newBoard = new Board({ title: body.title });
 
