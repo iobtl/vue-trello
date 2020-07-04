@@ -1,4 +1,4 @@
-# Vue Trello
+# Vue Trello (WIP)
 
 ## Run on a local machine
 ```
