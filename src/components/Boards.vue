@@ -29,13 +29,13 @@
           placeholder="Board name"
         />
         <button
-          class="bg-gray-600 bg-opacity-50 align-left w-1/8 mt-4 bg-opacity-85 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
+          class="bg-gray-600 bg-opacity-50 align-left w-1/8 mt-4 mr-6 bg-opacity-85 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
           :class="{ disabled: isDisabled }"
           type="submit"
           :disabled="isDisabled"
         >Create</button>
         <button
-          class="bg-gray-600 bg-opacity-50 align-left w-1/8 mt-4 ml-2 bg-opacity-85 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
+          class="bg-gray-600 bg-opacity-50 align-left w-1/8 mt-4 bg-opacity-85 hover:bg-gray-700 text-white font-bold font-sans rounded px-4 py-2"
           @click="triggerCreation"
         >Cancel</button>
       </form>

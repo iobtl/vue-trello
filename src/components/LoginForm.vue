@@ -99,6 +99,7 @@
 
 <script>
 import userService from "../services/user";
+import boardService from "../services/board";
 
 export default {
   name: "login-form",
@@ -114,12 +115,21 @@ export default {
   methods: {
     async loginUser() {
       const user = { username: this.username, password: this.password };
-      const returnedUser = await userService.login(user);
-      window.localStorage.setItem("loggedInUser", JSON.stringify(returnedUser));
+      try {
+        const returnedUser = await userService.login(user);
 
+        window.localStorage.setItem(
+          "loggedInUser",
+          JSON.stringify(returnedUser)
+        );
+        boardService.setToken(returnedUser.token);
+
+        this.$router.push(`${returnedUser.username}`);
+      } catch (e) {
+        console.log(e);
+      }
       this.username = "";
       this.password = "";
-      this.$router.push(`${returnedUser.username}/boards`);
     },
     switchRegister() {
       this.registered = !this.registered;

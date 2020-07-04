@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   passwordHash: String,
-  boards: [{ type: mongoose.Types.ObjectId, ref: 'Board' }],
+  boards: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Board' }],
 });
 
 userSchema.set('toJSON', {

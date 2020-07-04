@@ -7,6 +7,7 @@
 
 <script>
 import LoginForm from "./LoginForm.vue";
+import boardService from "../services/board";
 
 export default {
   name: "Home",
@@ -15,6 +16,7 @@ export default {
     const user = window.localStorage.getItem("loggedInUser");
     if (user) {
       const parsedUser = JSON.parse(user);
+      boardService.setToken(parsedUser.token);
       this.$router.push(`${parsedUser.username}/boards`);
     }
   }

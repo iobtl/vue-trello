@@ -5,9 +5,18 @@
 </template>
 
 <script>
+import boardService from "./services/board";
+
 export default {
-  name: 'App',
+  name: "App",
   components: {},
+  beforeCreate() {
+    const user = window.localStorage.getItem("loggedInUser");
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      boardService.setToken(parsedUser.token);
+    }
+  }
 };
 </script>
 
