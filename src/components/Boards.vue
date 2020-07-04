@@ -11,6 +11,7 @@
         v-for="(board, index) in boards"
         :key="index"
         class="container rounded text-center cursor-pointer flex-none w-auto h-32 max-w-xs bg-gray-600 hover:bg-gray-700 bg-opacity-50 mt-4 ml-4 text-white font-sans font-bold py-2"
+        @click="enterBoard(board)"
       >{{ board }}</div>
     </div>
     <div v-if="!creation" class="flex">
@@ -63,6 +64,10 @@ export default {
       boardService.create(this.boardName);
       this.boardName = "";
       this.creation = false;
+    },
+    enterBoard(boardName) {
+      const currentUser = this.$route.params.user;
+      this.$router.push(`${currentUser}/boards/${boardName}`);
     }
   },
   computed: {
@@ -70,7 +75,7 @@ export default {
       return this.boardName.length === 0;
     }
   },
-  created() {
+  beforeCreate() {
     boardService.getAll().then(returnedBoards => {
       this.boards = returnedBoards.map(board => board.title);
     });
