@@ -3,12 +3,14 @@ import VueRouter from 'vue-router';
 
 import Home from '../components/Home';
 import Boards from '../components/Boards';
+import BoardDetails from '../components/BoardDetails.vue';
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
   routes: [
     { path: '/', component: Home },
-    { path: '/:user/boards', component: Boards },
+    { path: '/:user', component: Boards },
+    { path: '/:user/boards/:name', component: BoardDetails },
   ],
 });

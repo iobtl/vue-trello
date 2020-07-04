@@ -1,7 +1,7 @@
 <template>
   <div class="container w-full max-w-m">
     <div class="flex ml-2">
-      <span>
+      <span class="ml-2">
         <img src="https://img.icons8.com/pastel-glyph/2x/person-male.png" width="32" />
       </span>
       <h2 class="text-left text-white font-sans font-bold text-xl ml-2">Personal Boards</h2>
@@ -86,5 +86,9 @@ export default {
 <style scoped>
 .disabled {
   color: lightgray;
+}
+
+.btn-vue {
+  @apply;
 }
 </style>

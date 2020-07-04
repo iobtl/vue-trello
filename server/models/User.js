@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   passwordHash: String,
+  boards: 
 });
 
 userSchema.set('toJSON', {
