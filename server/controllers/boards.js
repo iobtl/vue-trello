@@ -19,25 +19,18 @@ boardsRouter.post('/', async (request, response) => {
   console.log(token);
 
   if (token.startsWith('Bearer ')) {
-    token = jwt.verify(token.substring(7), process.env.SECRET_KEY, (err, _) => {
-      if (err && err.name === 'TokenExpiredError') {
-        token = err.name;
-      }
-    });
+    token = jwt.verify(token.substring(7), process.env.SECRET_KEY);
   }
 
-  console.log(token);
   if (!token) {
     return response.status(404).json({ error: 'invalid token' });
   }
 
   if (token === 'TokenExpiredError') {
-    console.log('redirecting');
     return response.redirect(404, '..');
   }
 
   const user = await User.findById(token.id);
-  console.log(user);
 
   const newBoard = new Board({ title: body.title, user: user._id });
   const savedBoard = await newBoard.save();
