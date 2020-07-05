@@ -13,4 +13,5 @@ export default new VueRouter({
     { path: '/:user', component: Boards },
     { path: '/:user/boards/:name', component: BoardDetails },
   ],
+  mode: 'history',
 });

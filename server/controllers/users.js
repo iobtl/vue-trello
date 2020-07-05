@@ -44,7 +44,7 @@ usersRouter.post('/login', async (request, response, next) => {
     const token = jwt.sign(userForToken, process.env.SECRET_KEY, {
       expiresIn: '1h',
     });
-    response.status(200).json({ token, username: user.username });
+    response.status(200).json({ token, username: user.username, id: user._id });
   } else {
     response.status(400).json({ error: 'Incorrect username or password' });
   }

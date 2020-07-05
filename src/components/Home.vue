@@ -17,7 +17,7 @@ export default {
     if (user) {
       const parsedUser = JSON.parse(user);
       boardService.setToken(parsedUser.token);
-      this.$router.push(`${parsedUser.username}/boards`);
+      this.$router.push(`${parsedUser.username}`);
     }
   }
 };

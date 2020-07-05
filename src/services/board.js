@@ -7,8 +7,8 @@ const setToken = async (userToken) => {
   token = `Bearer ${userToken}`;
 };
 
-const getAll = async () => {
-  const response = await axios.get(baseUrl);
+const getAll = async (userId) => {
+  const response = await axios.get(`${baseUrl}/${userId}`);
   return response.data;
 };
 
