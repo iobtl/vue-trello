@@ -34,7 +34,6 @@
           <button
             class="bg-vue bg-opacity-85 hover:bg-green-700 text-white font-bold rounded px-4 py-2"
             type="submit"
-            @click="$emit('set-message')"
           >Login</button>
           <button
             class="bg-vue bg-opacity-85 hover:bg-green-700 text-white font-bold rounded px-4 py-2"

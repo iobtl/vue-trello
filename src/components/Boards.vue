@@ -1,5 +1,12 @@
 <template>
   <div class="container w-full max-w-m">
+    <nav class="flex items-start ml-4">
+      <div
+        class="rounded font-sans font-bold text-white hover:text-green-400 px-2 py-1 mb-8 bg-gray-600 hover:bg-gray-700 bg-opacity-50 cursor-pointer"
+        @click="logout"
+      >Logout</div>
+    </nav>
+
     <div class="flex ml-2">
       <span class="ml-2">
         <img src="https://img.icons8.com/pastel-glyph/2x/person-male.png" width="32" />
@@ -48,9 +55,11 @@ import boardService from "../services/board";
 
 const retrieveBoards = async () => {
   const currentUser = window.localStorage.getItem("loggedInUser");
-  const userId = JSON.parse(currentUser).id;
-  const userBoards = await boardService.getAll(userId);
-  return userBoards.map(board => board.title);
+  if (currentUser) {
+    const userId = JSON.parse(currentUser).id;
+    const userBoards = await boardService.getAll(userId);
+    return userBoards.map(board => board.title);
+  }
 };
 
 export default {
@@ -75,6 +84,11 @@ export default {
     enterBoard(boardName) {
       const currentUser = this.$route.params.user;
       this.$router.push(`${currentUser}/boards/${boardName}`);
+    },
+    logout() {
+      window.localStorage.clear();
+      boardService.setToken(null);
+      this.$router.push("/");
     }
   },
   computed: {
