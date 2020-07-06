@@ -19,6 +19,11 @@ boardsRouter.get('/', async (request, response) => {
   return response.json(boards);
 });
 
+boardsRouter.get('/:board', async (request, response) => {
+  const board = await Board.findOne({ title: request.params.board });
+  return response.json(board);
+});
+
 boardsRouter.get('/:id', async (request, response) => {
   const boards = await Board.find({ user: request.params.id });
   return response.json(boards);
@@ -45,7 +50,7 @@ boardsRouter.post('/', async (request, response) => {
   return response.status(200).json({ message: 'board successfully created' });
 });
 
-boardsRouter.post('/boards/:board', async (request, response) => {
+boardsRouter.post('/:board', async (request, response) => {
   const body = request.body;
   let token = request.headers.authorization;
 
@@ -55,7 +60,8 @@ boardsRouter.post('/boards/:board', async (request, response) => {
     return response.status(404).json({ error: 'invalid token' });
   }
 
-  const board = await Board.find({ title: request.params.board });
+  const board = await Board.findOne({ title: request.params.board });
+  console.log(board);
   board.lists = board.lists.concat(body.listName);
   await board.save();
 

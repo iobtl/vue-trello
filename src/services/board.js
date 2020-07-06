@@ -7,6 +7,11 @@ const setToken = async (userToken) => {
   token = `Bearer ${userToken}`;
 };
 
+const getOne = async (boardName) => {
+  const response = await axios.get(`${baseUrl}/${boardName}`);
+  return response.data;
+};
+
 const getAll = async (userId) => {
   const response = await axios.get(`${baseUrl}/${userId}`);
   return response.data;
@@ -30,4 +35,4 @@ const createList = async (currentBoard, listName) => {
   return response.data;
 };
 
-export default { setToken, getAll, createBoard, createList };
+export default { setToken, getOne, getAll, createBoard, createList };

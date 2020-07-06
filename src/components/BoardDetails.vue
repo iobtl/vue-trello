@@ -3,6 +3,13 @@
     <div class="text-white text-2xl font-bold">
       <h1>{{$route.params.boardName}}</h1>
     </div>
+    <div class="grid grid-flow-row grid-cols-4 row-span-4">
+      <div
+        v-for="(list, index) in lists"
+        :key="index"
+        class="container rounded text-center cursor-pointer flex-none h-32 w-56 bg-gray-600 hover:bg-gray-700 bg-opacity-50 mt-4 text-white font-sans font-bold py-2"
+      >{{ list }}</div>
+    </div>
     <div
       v-if="!formCreation"
       class="bg-gray-600 hover:bg-gray-700 bg-opacity-50 pointer-cursor container rounded cursor-pointer text-center text-base h-8 w-56 px-2 py-1 mt-2 text-white font-bold"
@@ -33,9 +40,15 @@
 <script>
 import boardService from "../services/board";
 
+const retrieveLists = async boardName => {
+  const board = await boardService.getOne(boardName);
+  return board;
+};
+
 export default {
   data() {
     return {
+      lists: [],
       listName: "",
       formCreation: false
     };
@@ -51,6 +64,16 @@ export default {
     triggerCreation() {
       this.formCreation = !this.formCreation;
     }
+  },
+  beforeCreate() {
+    retrieveLists(this.$route.params.boardName).then(returnedBoard => {
+      this.lists = returnedBoard.lists;
+    });
+  },
+  beforeUpdate() {
+    retrieveLists(this.$route.params.boardName).then(returnedBoard => {
+      this.lists = returnedBoard.lists;
+    });
   }
 };
 </script>
