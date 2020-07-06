@@ -77,7 +77,7 @@ export default {
       this.boardName = "";
     },
     createNewBoard() {
-      boardService.create(this.boardName);
+      boardService.createBoard(this.boardName);
       this.boardName = "";
       this.creation = false;
     },

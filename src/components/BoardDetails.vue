@@ -1,11 +1,11 @@
 <template>
   <div class="text-left ml-4 font-sans">
     <div class="text-white text-2xl font-bold">
-      <h1>{{$route.params.name}}</h1>
+      <h1>{{$route.params.boardName}}</h1>
     </div>
     <div
       v-if="!formCreation"
-      class="bg-gray-600 hover:bg-gray-700 bg-opacity-50 pointer-cursor container rounded cursor-pointer text-center text-base h-8 w-56 px-2 py-1 mt-2 text-white font-normal"
+      class="bg-gray-600 hover:bg-gray-700 bg-opacity-50 pointer-cursor container rounded cursor-pointer text-center text-base h-8 w-56 px-2 py-1 mt-2 text-white font-bold"
       @click="triggerCreation"
     >Create new list</div>
     <form
@@ -31,6 +31,8 @@
   </div>
 </template>
 <script>
+import boardService from "../services/board";
+
 export default {
   data() {
     return {
@@ -40,7 +42,11 @@ export default {
   },
   methods: {
     createList() {
-      this.listName = "";
+      boardService
+        .createList(this.$route.params.boardName, this.listName)
+        .then(() => {
+          this.listName = "";
+        });
     },
     triggerCreation() {
       this.formCreation = !this.formCreation;

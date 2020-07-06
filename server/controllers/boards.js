@@ -3,6 +3,17 @@ const jwt = require('jsonwebtoken');
 const Board = require('../models/Board');
 const User = require('../models/User');
 
+const verifyToken = (token) => {
+  if (token.startsWith('Bearer ')) {
+    token = jwt.verify(token.substring(7), process.env.SECRET_KEY);
+    if (!token) {
+      return null;
+    } else {
+      return token;
+    }
+  }
+};
+
 boardsRouter.get('/', async (request, response) => {
   const boards = await Board.find({});
   return response.json(boards);
@@ -16,21 +27,14 @@ boardsRouter.get('/:id', async (request, response) => {
 boardsRouter.post('/', async (request, response) => {
   const body = request.body;
   let token = request.headers.authorization;
-  console.log(token);
 
-  if (token.startsWith('Bearer ')) {
-    token = jwt.verify(token.substring(7), process.env.SECRET_KEY);
-  }
+  const verifiedToken = verifyToken(token);
 
-  if (!token) {
+  if (!verifiedToken) {
     return response.status(404).json({ error: 'invalid token' });
   }
 
-  if (token === 'TokenExpiredError') {
-    return response.redirect(404, '..');
-  }
-
-  const user = await User.findById(token.id);
+  const user = await User.findById(verifiedToken.id);
 
   const newBoard = new Board({ title: body.title, user: user._id });
   const savedBoard = await newBoard.save();
@@ -39,6 +43,23 @@ boardsRouter.post('/', async (request, response) => {
   await user.save();
 
   return response.status(200).json({ message: 'board successfully created' });
+});
+
+boardsRouter.post('/boards/:board', async (request, response) => {
+  const body = request.body;
+  let token = request.headers.authorization;
+
+  const verifiedToken = verifyToken(token);
+
+  if (!verifiedToken) {
+    return response.status(404).json({ error: 'invalid token' });
+  }
+
+  const board = await Board.find({ title: request.params.board });
+  board.lists = board.lists.concat(body.listName);
+  await board.save();
+
+  return response.status(200).json({ message: 'list successfully created' });
 });
 
 module.exports = boardsRouter;

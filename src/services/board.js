@@ -12,7 +12,7 @@ const getAll = async (userId) => {
   return response.data;
 };
 
-const create = async (newBoard) => {
+const createBoard = async (newBoard) => {
   const board = { title: newBoard };
   const config = {
     headers: { Authorization: token },
@@ -21,4 +21,13 @@ const create = async (newBoard) => {
   return response.data;
 };
 
-export default { setToken, getAll, create };
+const createList = async (currentBoard, listName) => {
+  const list = { listName };
+  const config = {
+    headers: { Authorization: token },
+  };
+  const response = await axios.post(`${baseUrl}/${currentBoard}`, list, config);
+  return response.data;
+};
+
+export default { setToken, getAll, createBoard, createList };

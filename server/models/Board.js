@@ -10,6 +10,11 @@ const boardSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  lists: [
+    {
+      type: String,
+    },
+  ],
 });
 
 boardSchema.set('toJSON', {

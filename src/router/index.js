@@ -17,7 +17,7 @@ const router = new VueRouter({
       meta: { requiresAuth: true },
     },
     {
-      path: '/:user/boards/:name',
+      path: '/:user/boards/:boardName',
       name: 'Board',
       component: BoardDetails,
       meta: { requiresAuth: true },
