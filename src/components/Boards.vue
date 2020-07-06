@@ -113,8 +113,4 @@ export default {
 .disabled {
   color: lightgray;
 }
-
-.btn-vue {
-  @apply;
-}
 </style>
