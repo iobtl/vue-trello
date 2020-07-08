@@ -24,11 +24,6 @@ boardsRouter.get('/:board', async (request, response) => {
   return response.json(board);
 });
 
-boardsRouter.get('/:id', async (request, response) => {
-  const boards = await Board.find({ user: request.params.id });
-  return response.json(boards);
-});
-
 boardsRouter.post('/', async (request, response) => {
   const body = request.body;
   let token = request.headers.authorization;
