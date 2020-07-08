@@ -30,4 +30,6 @@ const createList = async (currentBoard, listName) => {
   return response.data;
 };
 
+const createCard = async (currentBoard, cardName) => {};
+
 export default { setToken, getOne, createBoard, createList };
