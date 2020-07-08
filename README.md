@@ -3,8 +3,8 @@
 ## Introduction
 Simple template to get a 'Trello' clone up and running. Embarked with the main purpose of playing around with Tailwind and practicing simple API development using Node.js (Express).
 
-![Homepage] (https://github.com/iobtl/vue-trello/blob/master/images/vue.png?raw=true)
-![Boards] (https://github.com/iobtl/vue-trello/blob/master/images/vue2.png?raw=true)
+<img src="https://github.com/iobtl/vue-trello/blob/master/images/vue.png" width="720" height="480">
+<img src="https://github.com/iobtl/vue-trello/blob/master/images/vue2.png" width="720" height="480">
 
 ## Run on a local machine
 ```
