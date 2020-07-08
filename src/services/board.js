@@ -12,11 +12,6 @@ const getOne = async (boardName) => {
   return response.data;
 };
 
-const getAll = async (userId) => {
-  const response = await axios.get(`${baseUrl}/${userId}`);
-  return response.data;
-};
-
 const createBoard = async (newBoard) => {
   const board = { title: newBoard };
   const config = {
@@ -35,4 +30,4 @@ const createList = async (currentBoard, listName) => {
   return response.data;
 };
 
-export default { setToken, getOne, getAll, createBoard, createList };
+export default { setToken, getOne, createBoard, createList };

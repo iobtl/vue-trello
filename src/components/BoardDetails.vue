@@ -1,5 +1,11 @@
 <template>
   <div class="text-left ml-4 font-sans">
+    <nav class="flex items-start">
+      <div
+        class="rounded font-sans font-bold text-white hover:text-green-400 px-2 py-1 mb-8 bg-gray-600 hover:bg-gray-700 bg-opacity-50 cursor-pointer"
+        @click="goBack"
+      >Back</div>
+    </nav>
     <div class="text-white text-2xl font-bold">
       <h1>{{$route.params.boardName}}</h1>
     </div>
@@ -63,6 +69,9 @@ export default {
     },
     triggerCreation() {
       this.formCreation = !this.formCreation;
+    },
+    goBack() {
+      this.$router.go(-1);
     }
   },
   beforeCreate() {
