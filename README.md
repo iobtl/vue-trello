@@ -13,3 +13,5 @@ npm run serve
 * JS: Vue.js + Vue Router
 * Server: Node.js (Express)
 * Database: MongoDB (Mongoose)
+
+Implements login authentication with jsonwebtoken (JWT).
