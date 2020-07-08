@@ -14,4 +14,4 @@ npm run serve
 * Server: Node.js (Express)
 * Database: MongoDB (Mongoose)
 
-Implements login authentication with jsonwebtoken (JWT).
+Implements login authentication with JSON Web Tokens (JWT).
