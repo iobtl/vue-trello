@@ -52,12 +52,13 @@
 
 <script>
 import boardService from "../services/board";
+import userService from "../services/user";
 
 const retrieveBoards = async () => {
   const currentUser = window.localStorage.getItem("loggedInUser");
   if (currentUser) {
     const userId = JSON.parse(currentUser).id;
-    const userBoards = await boardService.getAll(userId);
+    const userBoards = await userService.getBoards(userId);
     return userBoards.map(board => board.title);
   }
 };

@@ -11,4 +11,9 @@ const login = async (user) => {
   return response.data;
 };
 
-export default { register, login };
+const getBoards = async (userId) => {
+  const response = await axios.get(`${baseUrl}/${userId}`);
+  return response.data;
+};
+
+export default { register, login, getBoards };

@@ -8,6 +8,15 @@ usersRouter.get('/', async (request, response) => {
   return response.json(users);
 });
 
+usersRouter.get('/:id', async (request, response) => {
+  const user = await (
+    await User.findById(request.params.id).populate('boards')
+  ).execPopulate();
+
+  const userBoards = user.boards;
+  return response.status(200).json(userBoards);
+});
+
 usersRouter.post('/register', async (request, response, next) => {
   const body = request.body;
 

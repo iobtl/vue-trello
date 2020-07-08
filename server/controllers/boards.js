@@ -61,7 +61,6 @@ boardsRouter.post('/:board', async (request, response) => {
   }
 
   const board = await Board.findOne({ title: request.params.board });
-  console.log(board);
   board.lists = board.lists.concat(body.listName);
   await board.save();
 

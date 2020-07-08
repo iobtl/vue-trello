@@ -34,6 +34,8 @@
           <button
             class="bg-vue bg-opacity-85 hover:bg-green-700 text-white font-bold rounded px-4 py-2"
             type="submit"
+            :class="{disabled: isDisabled}"
+            :disabled="isDisabled"
           >Login</button>
           <button
             class="bg-vue bg-opacity-85 hover:bg-green-700 text-white font-bold rounded px-4 py-2"
@@ -84,6 +86,8 @@
             class="bg-vue bg-opacity-85 hover:bg-green-700 text-white font-bold rounded px-4 py-2"
             type="submit"
             @click="$emit('set-message')"
+            :class="{disabled: isDisabled}"
+            :disabled="isDisabled"
           >Register</button>
           <button
             class="bg-gray-600 bg-opacity-85 hover:bg-gray-700 text-white font-bold rounded px-4 py-2"
@@ -144,6 +148,11 @@ export default {
       this.password = "";
       this.email = "";
     }
+  },
+  computed: {
+    isDisabled() {
+      return this.username.length === 0 && this.password.length === 0;
+    }
   }
 };
 </script>
@@ -159,5 +168,9 @@ export default {
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateY(10px);
   opacity: 0;
+}
+
+.disabled {
+  color: lightgray;
 }
 </style>
